@@ -1,0 +1,105 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  background-color: #0e0e0e;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Floating border with padding from edges */
+.border-wrapper {
+  width: 95vw;
+  height: 95vh;
+  border: 12px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0e0e0e;
+  box-shadow: 0 0 40px rgba(255,255,255,0.05);
+  position: relative;
+  border-radius: 30px;
+}
+
+.spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.scene {
+  perspective: 1200px;
+  position: relative;
+}
+
+.card3d {
+  width: 90vw;
+  max-width: 400px;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
+  border-radius: 20px;
+}
+
+.card-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 20px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 20px 50px rgba(255,255,255,0.1),
+              0 8px 20px rgba(255,255,255,0.05);
+}
+
+.card-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 1024px) {
+  .card3d {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card3d {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card3d {
+    max-width: 90vw;
+  }
+}
