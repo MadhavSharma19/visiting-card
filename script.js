@@ -49,3 +49,19 @@ function rotateCard(currentX, currentY) {
   lastX = currentX;
   lastY = currentY;
 }
+
+// ✅ Touch hint logic
+const hint = document.getElementById("touch-hint");
+
+function hideHint() {
+  if (hint) {
+    hint.classList.add("fade-out");
+    setTimeout(() => {
+      hint.remove();
+    }, 600);
+  }
+}
+
+["touchstart", "mousedown"].forEach(event => {
+  window.addEventListener(event, hideHint, { once: true });
+});
